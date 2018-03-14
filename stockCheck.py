@@ -16,18 +16,10 @@ for item in compareCSV:
 for item in mainCSV:
     csv_two.append(item)
 
-print
-
 error_count = 0
 
 ref_column = raw_input("Input a reference column header (must be the same in both CSVs):")
-
-print
-
 compare_column = raw_input("Input a column heading you would like to compare (must be the same in both CSVs):")
-
-print
-
 title_column = raw_input("Input a title column header (must be the same in both CSVs):")
 
 print
@@ -42,7 +34,12 @@ for item in csv_one:
                 error_count+=1
 
 print
-print "%s errors" % error_count
+
+if error_count > 1:
+    print "%s errors" % error_count
+else:
+    print "1 error"
+
 print
 print "See wrong_items.csv for details."
 print

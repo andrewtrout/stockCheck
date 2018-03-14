@@ -20,13 +20,21 @@ print
 
 error_count = 0
 
+ref_column = raw_input("Input a reference column header (must be the same in both CSVs):")
+
+print
+
+compare_column = raw_input("Input a column heading you would like to compare (must be the same in both CSVs):")
+
+print
+
 for item in csv_one:
     for i in csv_two:
-        if item['Sku'] == i['Sku']:
-            if item['Stock'] != i['Stock']:
-                print "Stock of %s: " % (item['Name'] + ' ' + item['Sku']) + item['Stock'] + " not " + i['Stock']
-                wrong.append({'Compare title' : item['Name'], 'Compare Sku' : item['Sku'], 'Compare Stock' : item['Stock'],
-                              'Main title' : i['Name'], 'Main Sku' : i['Sku'], 'Main Stock' : i['Stock']})
+        if item[ref_column] == i[ref_column]:
+            if item[compare_column] != i[compare_column]:
+                print "Item %s: " % (item['Name'] + ' ' + item[ref_column]) + item[compare_column] + " not " + i[compare_column]
+                wrong.append({'Compare title' : item['Name'], 'Compare Sku' : item[ref_column], 'Compare Stock' : item[compare_column],
+                              'Main title' : i['Name'], 'Main Sku' : i[ref_column], 'Main Stock' : i[compare_column]})
                 error_count+=1
 
 print

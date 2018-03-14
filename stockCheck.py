@@ -28,13 +28,17 @@ compare_column = raw_input("Input a column heading you would like to compare (mu
 
 print
 
+title_column = raw_input("Input a title column header (must be the same in both CSVs):")
+
+print
+
 for item in csv_one:
     for i in csv_two:
         if item[ref_column] == i[ref_column]:
             if item[compare_column] != i[compare_column]:
-                print "Item %s: " % (item['Name'] + ' ' + item[ref_column]) + item[compare_column] + " not " + i[compare_column]
-                wrong.append({'Compare title' : item['Name'], 'Compare Sku' : item[ref_column], 'Compare Stock' : item[compare_column],
-                              'Main title' : i['Name'], 'Main Sku' : i[ref_column], 'Main Stock' : i[compare_column]})
+                print "Item %s: " % (item[title_column] + ' ' + item[ref_column]) + item[compare_column] + " not " + i[compare_column]
+                wrong.append({'Compare title' : item[title_column], 'Compare Sku' : item[ref_column], 'Compare Stock' : item[compare_column],
+                              'Main title' : i[title_column], 'Main Sku' : i[ref_column], 'Main Stock' : i[compare_column]})
                 error_count+=1
 
 print

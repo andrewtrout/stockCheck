@@ -29,8 +29,8 @@ for item in csv_one:
         if item[ref_column] == i[ref_column]:
             if item[compare_column] != i[compare_column]:
                 print "Item %s: " % (item[title_column] + ' ' + item[ref_column]) + item[compare_column] + " not " + i[compare_column]
-                wrong.append({'Compare title' : item[title_column], 'Compare Sku' : item[ref_column], 'Compare Stock' : item[compare_column],
-                              'Main title' : i[title_column], 'Main Sku' : i[ref_column], 'Main Stock' : i[compare_column]})
+                wrong.append({'Compare title' : item[title_column], 'Compare Referance' : item[ref_column], 'Compare Item' : item[compare_column],
+                              'Main title' : i[title_column], 'Main Referance' : i[ref_column], 'Main Item' : i[compare_column]})
                 error_count+=1
 
 print
@@ -44,8 +44,8 @@ print
 print "See wrong_items.csv for details."
 print
 
-colHeaders = ['Compare title', 'Compare Sku', 'Compare Stock',
-              'Main title', 'Main Sku', 'Main Stock']
+colHeaders = ['Compare title', 'Compare Referance', 'Compare Item',
+              'Main title', 'Main Referance', 'Main Item']
 
 with open('wrong_items.csv', 'w') as wrongfile:
     writer = csv.DictWriter(wrongfile, fieldnames=colHeaders)
